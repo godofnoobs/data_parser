@@ -1,0 +1,23 @@
+{
+  "name": "data_parser",
+  "version": "1.0.0",
+  "description": "data parser for my bi course project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/godofnoobs/data_parser.git"
+  },
+  "author": "godofnoobs",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/godofnoobs/data_parser/issues"
+  },
+  "homepage": "https://github.com/godofnoobs/data_parser#readme",
+  "dependencies": {
+    "jsdom": "^15.2.1",
+    "windows-1251": "^1.0.0"
+  }
+}
