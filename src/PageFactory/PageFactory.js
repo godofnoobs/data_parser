@@ -10,12 +10,13 @@ class PageFactory {
     
     getPage() {
         const path = this.listPth.pop();
-        console.log('PATH', path, typeof path);
         if (!path) {
             return;
         }
-        const pageHTML = windows1251.decode(fs.readFileSync(path).toString('binary'));
-        return pageHTML;
+        let pageHTML = windows1251.decode(fs.readFileSync(path).toString('binary'));
+        let result = pageHTML.slice();
+        pageHTML = null;
+        return result;
     }
 }
 

@@ -2,7 +2,7 @@ const path = require("path");
 const fs = require("fs");
 
 const defaultParams = {
-    pathToDirectory: '../../../src/',
+    pathToDirectory: '../../../src/Brest/',
 };
 
 // Return list of files by directories by given relative path
