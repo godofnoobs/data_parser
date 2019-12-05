@@ -1,5 +1,5 @@
-const path = require("path");
-const fs = require("fs");
+const path = require('path');
+const fs = require('fs');
 const windows1251 = require('windows-1251');
 
 
@@ -14,9 +14,7 @@ class PageFactory {
             return;
         }
         let pageHTML = windows1251.decode(fs.readFileSync(path).toString('binary'));
-        let result = pageHTML.slice();
-        pageHTML = null;
-        return result;
+        return pageHTML;
     }
 }
 

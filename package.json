@@ -18,6 +18,7 @@
   "homepage": "https://github.com/godofnoobs/data_parser#readme",
   "dependencies": {
     "jsdom": "^15.2.1",
+    "lodash.clonedeep": "^4.5.0",
     "windows-1251": "^1.0.0"
   }
 }

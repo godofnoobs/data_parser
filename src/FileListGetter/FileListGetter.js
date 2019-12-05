@@ -1,8 +1,8 @@
-const path = require("path");
-const fs = require("fs");
+const path = require('path');
+const fs = require('fs');
 
 const defaultParams = {
-    pathToDirectory: '../../../src/Brest/',
+    pathToDirectory: '../../../src/',
 };
 
 // Return list of files by directories by given relative path
@@ -40,25 +40,6 @@ class FileListGetter {
         });
     }
     
-    /*
-    output(link = this.listObj, currentPath = this.directoryPath) {
-        const output = this.output.bind(this);
-        const files = fs.readdirSync(currentPath);
-        files.forEach(function(file) {
-            const fullPath = path.join(currentPath, file);
-            if (fs.lstatSync(fullPath).isFile()) {
-                if (!link.hasOwnProperty('localFiles')) {
-                    link['localFiles'] = [];
-                }
-                link['localFiles'].push(file);
-            } else if (fs.lstatSync(fullPath).isDirectory()) {
-                link[file] = {};
-                output(link[file], fullPath);
-            }
-
-        });
-    }
-    */
 }
 
 

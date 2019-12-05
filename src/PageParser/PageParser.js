@@ -1,4 +1,4 @@
-// const jsdom = require("jsdom");
+const cloneDeep = require('lodash.clonedeep');
 const { JSDOM } = require("jsdom");
 
 
@@ -6,6 +6,7 @@ const { JSDOM } = require("jsdom");
 class PageParser{
     constructor() {
         this.propertiesList = [];
+        this.rows = [];
     }
     
     createDOM(pageHTML) {
@@ -29,22 +30,33 @@ class PageParser{
     }
     
     parsePage() {
-        const rowPage = { [propsDefaults['court']]: this.getCourt() };
+        this.rowPage = { [propsDefaults['court']]: this.getCourt() };
         if (!this.propertiesList.includes(propsDefaults.court)) {
             this.propertiesList.push(propsDefaults.court);
             this.propertiesList.push(propsDefaults.courtType);
             this.propertiesList.push(propsDefaults.caseNum);
         };
         
-        this.parseCourtTypes(rowPage);
+        this.parseCourtTypes();
         
-        // try to avoid memory leaks
-        this.dom = null;
-        //console.log('PR', this.propertiesList);
+        const result = cloneDeep(this.rows);
+        this.rows = [];
+        
+        return result;
     }
     
-    parseCourtTypes(rowPage) {
-        let rowType = Object.assign({}, rowPage);
+    destroy() {
+        this.dom.window.close();
+        this.dom = null;
+        this.propertiesList = null;
+        this.rowPage = null;
+        this.rowType = null;
+        this.row = null;
+        this.rows = null;
+    }
+    
+    parseCourtTypes() {
+        this.rowType = Object.assign({}, this.rowPage);
         let elem = this.getSchedule();
         if (!elem) {
             return;
@@ -57,21 +69,18 @@ class PageParser{
                 continue;
             }
             if (elem.tagName === 'H4') {
-                rowType = Object.assign({}, rowPage);
-                rowType[propsDefaults.courtType] = elem.firstChild.innerHTML;
+                this.rowType = Object.assign({}, this.rowPage);
+                this.rowType[propsDefaults.courtType] = elem.firstChild.innerHTML;
             } else if (elem.tagName === 'TABLE') {
-                let row = Object.assign({}, rowType);
-                this.parseCase(elem, row);
+                this.row = Object.assign({}, this.rowType);
+                this.parseCase(elem);
             }
         }
-        // try to avoid memory leaks
-        elem = null;
-        rowType = null;
     }
     
-    parseCase(el, row) {
+    parseCase(el) {
         let elem = el.querySelector('tr');
-        row[propsDefaults.caseNum] = elem.firstChild.innerHTML.split(':')[1].trim(' ');
+        this.row[propsDefaults.caseNum] = elem.firstChild.innerHTML.split(':')[1].trim(' ');
         while (1) {
             elem = elem.nextSibling;
             if (!elem) {
@@ -81,12 +90,13 @@ class PageParser{
             }
             const attr = elem.querySelector('span').innerHTML;
             const value = elem.querySelector('td:last-of-type').innerHTML;
-            row[attr] = value;
+            this.row[attr] = value;
             if (!this.propertiesList.includes(attr)) {
                 this.propertiesList.push(attr);
             }
         }
-        //console.log('ROW', row);
+        const currenRow = Object.assign({}, this.row);
+        this.rows.push(currenRow);
     }
 
 }
