@@ -2,6 +2,12 @@ const cloneDeep = require('lodash.clonedeep');
 const { JSDOM } = require("jsdom");
 
 
+const propsDefaults = {
+    court: 'Суд',
+    courtType: 'Тип производства',
+    caseNum: 'Номер дела',
+};
+
 
 class PageParser{
     constructor() {
@@ -100,11 +106,5 @@ class PageParser{
     }
 
 }
-
-var propsDefaults = {
-    court: 'Суд',
-    courtType: 'Тип производства',
-    caseNum: 'Номер дела',
-};
 
 module.exports = PageParser;

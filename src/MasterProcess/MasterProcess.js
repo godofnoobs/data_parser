@@ -1,27 +1,6 @@
 const path = require('path');
 const childProcess = require('child_process');
 
-const defaultArgsListAbsolute = [
-    'E:\\EPAM\\DEBA\\Homework\\3.final_project\\work\\parser\\src\\Brest\\2014',
-    'E:\\EPAM\\DEBA\\Homework\\3.final_project\\work\\parser\\src\\Brest\\2015',
-    'E:\\EPAM\\DEBA\\Homework\\3.final_project\\work\\parser\\src\\Brest\\2016',
-    'E:\\EPAM\\DEBA\\Homework\\3.final_project\\work\\parser\\src\\Gomel\\2014',
-    'E:\\EPAM\\DEBA\\Homework\\3.final_project\\work\\parser\\src\\Gomel\\2015',
-    'E:\\EPAM\\DEBA\\Homework\\3.final_project\\work\\parser\\src\\Gomel\\2016',
-    'E:\\EPAM\\DEBA\\Homework\\3.final_project\\work\\parser\\src\\Grodno\\2014',
-    'E:\\EPAM\\DEBA\\Homework\\3.final_project\\work\\parser\\src\\Grodno\\2015',
-    'E:\\EPAM\\DEBA\\Homework\\3.final_project\\work\\parser\\src\\Grodno\\2016',
-    'E:\\EPAM\\DEBA\\Homework\\3.final_project\\work\\parser\\src\\Minsk\\2014',
-    'E:\\EPAM\\DEBA\\Homework\\3.final_project\\work\\parser\\src\\Minsk\\2015',
-    'E:\\EPAM\\DEBA\\Homework\\3.final_project\\work\\parser\\src\\Minsk\\2016',
-    'E:\\EPAM\\DEBA\\Homework\\3.final_project\\work\\parser\\src\\Minsk_city\\2014',
-    'E:\\EPAM\\DEBA\\Homework\\3.final_project\\work\\parser\\src\\Minsk_city\\2015',
-    'E:\\EPAM\\DEBA\\Homework\\3.final_project\\work\\parser\\src\\Minsk_city\\2016',
-    'E:\\EPAM\\DEBA\\Homework\\3.final_project\\work\\parser\\src\\Vitebsk\\2014',
-    'E:\\EPAM\\DEBA\\Homework\\3.final_project\\work\\parser\\src\\Vitebsk\\2015',
-    'E:\\EPAM\\DEBA\\Homework\\3.final_project\\work\\parser\\src\\Vitebsk\\2016'
-];
-
 const defaultArgsList = [
     '..\\..\\..\\src\\Brest\\2014',
     '..\\..\\..\\src\\Brest\\2015',

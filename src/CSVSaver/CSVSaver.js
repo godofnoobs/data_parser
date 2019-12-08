@@ -39,6 +39,7 @@ const keys = [
     'defendant',
     'other_sides',
     'judge',
+    'subject',
     'process_date',
     'process_time',
     'room_num',

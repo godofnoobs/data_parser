@@ -19,6 +19,13 @@ class Controller {
         this.saver = new CSVSsver();
     }
     
+    destroy() {
+        this.pageParser.destroy();
+        this.pageParser = null;
+        this.fileGetter = null;
+        this.pageFactory = null;
+        this.saver = null;
+    }
 
     do() {
         let count = 0;
